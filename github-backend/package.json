@@ -1,0 +1,17 @@
+{
+  "name": "github-backend",
+  "version": "1.0.0",
+  "description": "webhooktutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "vijay",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
