@@ -1,9 +1,11 @@
 const express = require('express');
 require('dotenv').config();
 const app = express();
+// To validate the json data which is coming from frontend
 app.use(express.json());
 
 // Middle ware to validate custom haeader
+// Syntax for  middle ware  app.get(path, (req, res, next) => {}, (req, res) => {})
 const authMiddleware =(req,res,next)=>{
     const headers=req.headers;
     const secretHeader=headers["x-secret"]

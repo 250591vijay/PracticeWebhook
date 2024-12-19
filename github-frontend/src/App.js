@@ -7,7 +7,7 @@ const eventsList = [
   {
     key: "COMMIT",
     title: "Commit",
-    checked: true,
+    checked: false,
   },
   {
     key: "PUSH",
@@ -29,7 +29,7 @@ function App() {
   });
 
   // ['COMMIT', 'PUSH']
-
+  // Jab form submit hoga toh ye function call ho jayega
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("/api/webhooks", {
@@ -67,13 +67,14 @@ function App() {
   const handleEventHappened = (key) => {
     axios.post("/api/event-emulate", {
       type: key,
-      data: { eventType: key, initiator: "Vijay K" },
+      data: { eventType: key, initiator: "Vijay K",message:"Event Happened"},
     });
   };
   return (
     <div className="App">
       <h1 className="text-3xl font-bold text-center py-4">
-        My Github (My Repo)
+        {/* My Github (My Repo) */}
+        WEBHOOK REGISTER PAGE
       </h1>
       <div className="container mx-auto">
         <h1 className="text-xl">Register a webhook</h1>
@@ -104,6 +105,7 @@ function App() {
               className="w-full"
             />
           </div>
+          {/* // Checkbox ka list hai use map function k through iterate kar rhe hai*/}
           <div className="mt-4">
             <h3 className="font-bold mb-2">Trigger webhook on events</h3>
             {eventsList.map((item, idx) => {
@@ -139,8 +141,7 @@ function App() {
               <button
                 key={eventType.key}
                 className="mt-4 bg-green-500 text-white px-4 py-2 rounded-xl"
-                onClick={() => handleEventHappened(eventType.key)}
-              >
+                onClick={() => handleEventHappened(eventType.key)}>
                 {eventType.title}
               </button>
             ))}
