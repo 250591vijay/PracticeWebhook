@@ -3,9 +3,6 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-//To store in memory for testing purpose
-const message=[];
-
 // Middle ware to validate custom haeader
 const authMiddleware =(req,res,next)=>{
     const headers=req.headers;
@@ -15,6 +12,10 @@ const authMiddleware =(req,res,next)=>{
     }
     next();
 }
+//To store in memory for testing purpose
+// Jo v data aayega wo is temp memory m push ho ga
+// this come in array form
+const message=[];
 
 //routes
 // use of authMiddleware as a middleware function
@@ -25,6 +26,7 @@ app.post('/git-info',authMiddleware,(req,res)=>{
   res.sendStatus(200).send("Data received successfully");
 })
 
+// To check the data stored in memory at http://localhost:5601
 app.get('/',(req,res)=>{
     return res.json(message);
 })

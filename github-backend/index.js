@@ -29,7 +29,6 @@ app.post("/api/event-emulate", (req, res) => {
   // Emulating a delay in processing
 
   //Event trigger(call,webhook)
-
   setTimeout(async() => {
 // This statement contain the array of webhooks
     const webhookList =webhooks[type]
@@ -55,6 +54,8 @@ app.post("/api/event-emulate", (req, res) => {
 });
 
 // Donot do this this in production
+// This api show that the registered webhooks are stored in memory
+// In real world we will store it in database
 app.get('/api/db',(req,res)=>{
 res.json(webhooks)
 });
